@@ -1,0 +1,27 @@
+<form action="/projects/{{project._id}}/todos" method="post">
+<input type="hidden" value="{{project._id}}" name="projectId">
+  <fieldset>
+    <legend>Add a To-Do!</legend>
+
+    <!-- DESCRIPTION -->
+    <div class="form-group">
+      <label for="todo-content">Description</label><br>
+      <textarea class="form-control"
+      id="todo-content"
+      name="content"
+      rows="10"
+      placeholder="Your To-Do..."/></textarea>
+    </div>
+  </fieldset>
+
+  <!-- EDIT BUTTON -->
+  <!-- <div class="form-group">
+    <button class="btn btn-primary" type="edit">Save Comment</button>
+  </div>
+</form> -->
+
+  <!-- BUTTON -->
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Save To Do</button>
+  </div>
+</form>

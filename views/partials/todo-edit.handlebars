@@ -1,0 +1,21 @@
+<form  method="POST" action="/projects/todo/{{todo._id}}?_method=PUT">
+<input type="hidden" value="{{todo.projectId}}" name="projectId">
+  <fieldset>
+    <legend>Add a To-Do!</legend>
+
+    <!-- DESCRIPTION -->
+    <div class="form-group">
+      <label for="todo-content">To Do</label><br>
+      <textarea class="form-control"
+      id="todo-content"
+      name="content"
+      rows="10"
+      placeholder="{{todo.content}}"/></textarea>
+    </div>
+  </fieldset>
+
+  <!-- BUTTON -->
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Save To Do</button>
+  </div>
+</form>

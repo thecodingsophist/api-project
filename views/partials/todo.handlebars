@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">{{this.title}}</h4>
+    <p class="card-text">{{this.content}}</p>
+    <!-- Delete link -->
+
+    <p><form method="POST" action="/projects/todos/{{this._id}}?_method=DELETE">
+        <button class="btn btn-link" type="submit">Delete</button></form></p>
+
+        <!-- Edit link -->
+        <p><form method="GET" action="/projects/todos/{{this._id}}/edit">
+
+        <button class="btn btn-link" type="submit">Edit</button></form></p>
+
+
+  </div>
+</div>

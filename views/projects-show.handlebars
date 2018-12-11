@@ -1,0 +1,27 @@
+<a href="/">Back to Home</a>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+<h1> {{project.title}} </h1>
+<p> {{project.description}} </p>
+
+<p><a href="/projects/{{project._id}}/edit">
+    <button type="submit"> Edit </button></a></p>
+
+<!---Delete button --->
+<p><form method="POST" action="/projects/{{project._id}}?_method=DELETE">
+    <button type="submit">Delete</button>
+</form></p>
+
+<!-- Comment form -->
+{{> todo-form}}
+
+<hr>
+
+<!-- Show Comments -->
+{{#each todos}}
+  {{> todo}}
+{{/each}}
+
+</div>
+</div>
