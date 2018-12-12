@@ -20,8 +20,15 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-const projects = require('./controllers/projects')(app);
+
+
+
+
+const projects = require('./controllers/projects');
 const port = process.env.PORT || 3000;
+
+app.use('/project', projects);
+http://localhost/project/projects/:id/edit
 
 todosController(app);
 

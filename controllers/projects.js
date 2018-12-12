@@ -2,13 +2,14 @@
 // const express = require('express');
 const Todo = require('../models/todo');
 // const app = express()
-const Project = require('../models/project')
+const Project = require('../models/project');
+const router = require('express').Router()
 
 
-module.exports = function(app) {
+
 
   //INDEX
-  app.get('/', (req, res) => {
+  router.get('/', (req, res) => {
       Project.find()
           .then(projects => {
               console.log("GET HERE" + projects)
@@ -20,12 +21,12 @@ module.exports = function(app) {
   })
 
   //NEW
-  app.get('/projects/new', (req, res) => {
+  router.get('/projects/new', (req, res) => {
       res.render('projects-new', {});
   })
 
   //CREATE
-  app.post('/projects', (req, res) => {
+  router.post('/projects', (req, res) => {
     Project.create(req.body).then((project) => {
       // console.log(req.body);
       console.log("HELLLOOOOOO" + project);
@@ -36,7 +37,7 @@ module.exports = function(app) {
   })
 
   //SHOW
-  app.get('/projects/:id', (req, res) => {
+  router.get('/projects/:id', (req, res) => {
       //find project
       Project.findById(req.params.id).then((project) => {
           Todo.find({projectId: req.params.id}).then(todos => {
@@ -49,7 +50,7 @@ module.exports = function(app) {
   });
 
   //EDIT
-  app.get('/projects/:id/edit', function (req, res) {
+  router.get('/projects/:id/edit', function (req, res) {
       console.log("just did an edit")
       Project.findById(req.params.id, function(err, project) {
           console.log("Not having problems")
@@ -61,7 +62,7 @@ module.exports = function(app) {
   })
 
   //DELETE
-  app.delete('/projects/:id', function (req, res) {
+  router.delete('/projects/:id', function (req, res) {
       console.log("DELETE project")
       Project.findByIdAndRemove(req.params.id)
         .then((project) => {
@@ -72,7 +73,7 @@ module.exports = function(app) {
   })
 
   //UPDATE
-  app.put('/projects/:id', (req, res) => {
+  router.put('/projects/:id', (req, res) => {
       console.log("updating")
       Project.findByIdAndUpdate(req.params.id, req.body)
           .then((project) => {
@@ -83,5 +84,4 @@ module.exports = function(app) {
               console.log(err.message)
           })
   })
-
-}
+module.exports = router
