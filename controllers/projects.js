@@ -1,15 +1,15 @@
 //charity.js
-// const express = require('express');
+const express = require('express');
 const Todo = require('../models/todo');
-// const app = express()
+const app = express()
 const Project = require('../models/project');
-const router = require('express').Router()
+// var express = require('express')
+// var router = express.Router()
 
 
-
-
+module.exports = (app) => {
   //INDEX
-  router.get('/', (req, res) => {
+  app.get('/', (req, res) => {
       Project.find()
           .then(projects => {
               console.log("GET HERE" + projects)
@@ -21,12 +21,12 @@ const router = require('express').Router()
   })
 
   //NEW
-  router.get('/projects/new', (req, res) => {
+  app.get('/projects/new', (req, res) => {
       res.render('projects-new', {});
   })
 
   //CREATE
-  router.post('/projects', (req, res) => {
+  app.post('/projects', (req, res) => {
     Project.create(req.body).then((project) => {
       // console.log(req.body);
       console.log("HELLLOOOOOO" + project);
@@ -37,7 +37,7 @@ const router = require('express').Router()
   })
 
   //SHOW
-  router.get('/projects/:id', (req, res) => {
+  app.get('/projects/:id', (req, res) => {
       //find project
       Project.findById(req.params.id).then((project) => {
           Todo.find({projectId: req.params.id}).then(todos => {
@@ -50,7 +50,7 @@ const router = require('express').Router()
   });
 
   //EDIT
-  router.get('/projects/:id/edit', function (req, res) {
+  app.get('/projects/:id/edit', function (req, res) {
       console.log("just did an edit")
       Project.findById(req.params.id, function(err, project) {
           console.log("Not having problems")
@@ -62,7 +62,7 @@ const router = require('express').Router()
   })
 
   //DELETE
-  router.delete('/projects/:id', function (req, res) {
+  app.delete('/projects/:id', function (req, res) {
       console.log("DELETE project")
       Project.findByIdAndRemove(req.params.id)
         .then((project) => {
@@ -73,7 +73,7 @@ const router = require('express').Router()
   })
 
   //UPDATE
-  router.put('/projects/:id', (req, res) => {
+  app.put('/projects/:id', (req, res) => {
       console.log("updating")
       Project.findByIdAndUpdate(req.params.id, req.body)
           .then((project) => {
@@ -84,4 +84,6 @@ const router = require('express').Router()
               console.log(err.message)
           })
   })
-module.exports = router
+}
+// module.exports = router
+// module.exports = app
