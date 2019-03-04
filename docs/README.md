@@ -6,7 +6,7 @@ PROPOSAL:
 
 The idea behind this API is to create, read, update and delete To-Do items for users. Each Project created will have To-Dos associated with it. 
 
-My routes/endpoints below are described as follows:
+My ROUTES/ENDPOINTS below are described as follows:
 
 Example Req
 Expected Response
