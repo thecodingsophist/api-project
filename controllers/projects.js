@@ -1,7 +1,7 @@
 //charity.js
 const express = require('express');
 const Todo = require('../models/todo');
-const app = express()
+// const app = require('../app.js')
 const Project = require('../models/project');
 
 module.exports = (app) => {
