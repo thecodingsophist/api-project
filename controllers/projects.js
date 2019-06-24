@@ -3,16 +3,13 @@ const express = require('express');
 const Todo = require('../models/todo');
 const app = express()
 const Project = require('../models/project');
-// var express = require('express')
-// var router = express.Router()
-
 
 module.exports = (app) => {
   //INDEX
   app.get('/', (req, res) => {
+      console.log("HELLLLLOOOOOOOO")
       Project.find()
           .then(projects => {
-              console.log("GET HERE" + projects)
               res.render('projects-index', { projects: projects });
           })
           .catch(err => {
@@ -85,5 +82,3 @@ module.exports = (app) => {
           })
   })
 }
-// module.exports = router
-// module.exports = app
