@@ -1,6 +1,6 @@
 # Headline
 
-> An awesome project.
+> An awesome project: https://fast-reaches-30422.herokuapp.com/ (some errors, still fixing)
 
 My routes/endpoints below are described as follows:
 
@@ -31,3 +31,7 @@ app.get('/projects/todo/:id/edit') this gives an edit form for todos
 app.put('/projects/todos/:id') this is the action of pushing code to the database when a todo is changed
 
 app.delete('/projects/todos/:id') this deletes a todo
+
+# API Proposal
+
+My proposal for my API project is to use RESTful architecture to create an API that allows the user to create, read, update, and delete different projects and todos for those projects. It uses MongoDB, provisions users, has a brochure site/documentation, uses MVC and RESTful architecture, uses TDD approach and has no exposed secrets. 
