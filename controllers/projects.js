@@ -6,7 +6,7 @@ const Project = require('../models/project');
 
 module.exports = (app) => {
   //INDEX
-  app.get('/cats', (req, res) => {
+  app.get('/', (req, res) => {
       console.log("HELLLLLOOOOOOOO")
       Project.find()
           .then(projects => {
