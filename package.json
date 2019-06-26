@@ -4,11 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-     "start": "node app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-      "node": "10.11.0"
+    "node": "10.11.0"
   },
   "repository": {
     "type": "git",
@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/thecodingsophist/api-project#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "chai": "^4.2.0",
-    "express": "^4.16.4",
-    "express-handlebars": "^3.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
     "faker": "^4.1.0",
     "method-override": "^3.0.0",
-    "mongoose": "^5.3.15"
+    "mongoose": "^5.6.1"
   }
 }
