@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 var exphbs = require('express-handlebars');
+var User = require('./models/user.js')
 
 // mongodb
 var mongoose = require('mongoose');
@@ -20,14 +21,30 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://shrouded-ridge-38664.herokuapp.com/auth/google/callback"
+    // callbackURL: "https://shrouded-ridge-38664.herokuapp.com/auth/google/callback"
+    callbackURL: "http://localhost:3000/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
+      console.log("User", profile)
        User.findOrCreate({ googleId: profile.id }, function (err, user) {
          return done(err, user);
        });
   }
 ));
+
+// serialize/deserialize
+
+// used to serialize the user for the session
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+// used to deserialize the user
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
 
 // sessions
 var session = require("express-session");
@@ -55,10 +72,10 @@ const authRoutes = require('./routes/routes.js')
 
 const port = process.env.PORT || 3000;
 
+authRoutes(app, passport);
 todosController(app);
 projectsController(app);
 // authController(app, passport);
-authRoutes(app, passport);
 
 // authenticate routes
 // app.get('/auth/google',

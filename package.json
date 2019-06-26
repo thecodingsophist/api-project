@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/thecodingsophist/api-project#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "dotenv": "^8.0.0",
@@ -30,6 +31,7 @@
     "faker": "^4.1.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.6.1",
+    "mongoose-find-or-create": "^1.3.1",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0"
   }
