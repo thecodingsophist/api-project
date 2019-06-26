@@ -1,6 +1,6 @@
 # Headline
 
-> An awesome project: https://fast-reaches-30422.herokuapp.com/ (some errors, still fixing)
+> An awesome project: https://shrouded-ridge-38664.herokuapp.com/ (Shipped!)
 
 My routes/endpoints below are described as follows:
 
