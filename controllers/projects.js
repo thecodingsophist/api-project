@@ -1,9 +1,10 @@
 const Todo = require('../models/todo');
 const Project = require('../models/project');
+const Auth = require('../config/middleware/isAuthenticated')
 
 module.exports = (app) => {
   //INDEX
-  app.get('/home', (req, res) => {
+  app.get('/home', Auth, (req, res) => {
       console.log("HELLLLLOOOOOOOO")
       Project.find()
           .then(projects => {
@@ -15,12 +16,12 @@ module.exports = (app) => {
   })
 
   //NEW
-  app.get('/projects/new', (req, res) => {
+  app.get('/projects/new', Auth, (req, res) => {
       res.render('projects-new', {});
   })
 
   //CREATE
-  app.post('/projects', (req, res) => {
+  app.post('/projects', Auth, (req, res) => {
     Project.create(req.body).then((project) => {
       // console.log(req.body);
       console.log("HELLLOOOOOO" + project);
@@ -31,7 +32,7 @@ module.exports = (app) => {
   })
 
   //SHOW
-  app.get('/projects/:id', (req, res) => {
+  app.get('/projects/:id', Auth, (req, res) => {
       //find project
       Project.findById(req.params.id).then((project) => {
           Todo.find({projectId: req.params.id}).then(todos => {
@@ -44,7 +45,7 @@ module.exports = (app) => {
   });
 
   //EDIT
-  app.get('/projects/:id/edit', function (req, res) {
+  app.get('/projects/:id/edit', Auth, function (req, res) {
       console.log("just did an edit")
       Project.findById(req.params.id, function(err, project) {
           console.log("Not having problems")
@@ -56,7 +57,7 @@ module.exports = (app) => {
   })
 
   //DELETE
-  app.delete('/projects/:id', function (req, res) {
+  app.delete('/projects/:id', Auth, function (req, res) {
       console.log("DELETE project")
       Project.findByIdAndRemove(req.params.id)
         .then((project) => {
@@ -67,7 +68,7 @@ module.exports = (app) => {
   })
 
   //UPDATE
-  app.put('/projects/:id', (req, res) => {
+  app.put('/projects/:id', Auth, (req, res) => {
       console.log("updating")
       Project.findByIdAndUpdate(req.params.id, req.body)
           .then((project) => {
