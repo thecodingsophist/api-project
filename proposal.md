@@ -1,0 +1,1 @@
+My proposal for my API project is to use RESTful architecture to create an API that allows the user to create, read, update, and delete different projects and todos for those projects. It uses MongoDB, provisions users, has a brochure site/documentation, uses MVC and RESTful architecture, uses TDD approach and has no exposed secrets.
