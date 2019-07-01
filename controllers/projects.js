@@ -5,7 +5,7 @@ const Project = require('../models/project');
 module.exports = (app) => {
   //INDEX
   app.get('/home', (req, res) => {
-      console.log("HELLLLLOOOOOOOO")
+      console.log("in the home route: " + req.user)
       Project.find()
           .then(projects => {
               res.render('projects-index', { projects: projects });
