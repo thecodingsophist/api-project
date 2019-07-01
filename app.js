@@ -28,6 +28,9 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, done) {
       console.log("User", profile)
        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+           if (user) {
+               console.log("user found")
+           }
          return done(err, user);
        });
 
