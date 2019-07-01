@@ -42,18 +42,28 @@ passport.use(new GoogleStrategy({
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
     console.log("serialized")
-    done(null, user._id);
+    done(null, user.id);
 });
 
 // used to deserialize the user
+// passport.deserializeUser(function(id, done) {
+//     // console.log("deserialized")
+//     User.findById(id, function(err, user) {
+//         if (user) {
+//             console.log("user in deserialize")
+//         }
+//         done(err, user);
+//     });
+// });
+
 passport.deserializeUser(function(id, done) {
     console.log("deserialized")
-    User.findById(id, function(err, user) {
+	User.findById(id).then(user => {
         if (user) {
             console.log("user in deserialize")
         }
-        done(err, user);
-    });
+		done(null, user);
+	});
 });
 
 // sessions
