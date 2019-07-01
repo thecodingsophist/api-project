@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 var exphbs = require('express-handlebars');
 var User = require('./models/user.js')
+var cookieParser = require('cookie-parser');
 const auth = require('./config/middleware/isAuthenticated')
 
 // mongodb
@@ -36,6 +37,8 @@ passport.use(new GoogleStrategy({
 
   }
 ));
+
+app.use(cookieParser());
 
 // serialize/deserialize
 
