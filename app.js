@@ -41,7 +41,7 @@ passport.use(new GoogleStrategy({
 
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user._id);
 });
 
 // used to deserialize the user
