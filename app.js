@@ -3,6 +3,7 @@ const app = express()
 var exphbs = require('express-handlebars');
 var User = require('./models/user.js')
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 const auth = require('./config/middleware/isAuthenticated')
 
 // mongodb
@@ -38,7 +39,13 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-app.use(cookieParser());
+app.use(cookieSession({
+    name: "Projects and ToDos",
+    keys: ["secretkey"],
+    maxAge: 30 * 24 * 60 * 60 * 1000
+}))
+
+app.use(cookieParser()))
 
 // serialize/deserialize
 
