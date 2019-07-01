@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 var exphbs = require('express-handlebars');
 var User = require('./models/user.js')
+const auth = require('./config/middleware/isAuthenticated')
 
 // mongodb
 var mongoose = require('mongoose');
@@ -74,8 +75,11 @@ const authRoutes = require('./routes/routes.js')
 const port = process.env.PORT || 3000;
 
 authRoutes(app, passport);
+//authentication for the todos and projects controller
+app.use(auth)
 todosController(app);
 projectsController(app);
+
 // authController(app, passport);
 
 // authenticate routes

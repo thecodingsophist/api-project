@@ -1,8 +1,8 @@
 const Todo = require('../models/todo');
-const Auth = require('../config/middleware/isAuthenticated')
+// const Auth = require('../config/middleware/isAuthenticated')
 
 module.exports = (app) => {
-    app.post('/projects/:projectId/todos', Auth, (req, res) => {
+    app.post('/projects/:projectId/todos', (req, res) => {
       Todo.create(req.body).then(todo => {
         res.redirect(`/projects/${todo.projectId}`);
       }).catch((err) => {
@@ -10,7 +10,7 @@ module.exports = (app) => {
       });
     });
 
-    app.get('/projects/todo/:id/edit', Auth, function (req, res) {
+    app.get('/projects/todo/:id/edit', function (req, res) {
         Todo.findById(req.params.id, function(err, todo) {
             res.render('partials/todo-edit', {todo: todo} );
         }).catch ( (error) => {
@@ -19,7 +19,7 @@ module.exports = (app) => {
 
     })
     // update comment
-    app.put('/projects/todos/:id', Auth, (req, res) => {
+    app.put('/projects/todos/:id', (req, res) => {
         Todo.findByIdAndUpdate(req.params.id, req.body)
             .then(todo=> {
                 res.redirect(`/projects/${todo.projectId}`)
@@ -29,7 +29,7 @@ module.exports = (app) => {
             })
     })
 
-    app.delete('/projects/todos/:id', Auth, (req, res) => {
+    app.delete('/projects/todos/:id', (req, res) => {
         console.log(`delete todo id ${req.params.id}`)
       Todo.findByIdAndRemove(req.params.id).then(todo => {
         console.log(todo)
