@@ -8,7 +8,7 @@ Example Req Expected Response
 
 FOR PROJECTS
 
-app.get('/') returns an index of projects
+app.get('/home') returns an index of projects
 
 app.get('/projects/new') returns a template for new projects
 
