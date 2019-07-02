@@ -10,6 +10,7 @@ module.exports = (app) => {
       });
     });
 
+    // edit todo
     app.get('/projects/todos/:id/edit', function (req, res) {
         Todo.findById(req.params.id, function(err, todo) {
             res.render('partials/todo-edit', {todo: todo} );
@@ -21,7 +22,7 @@ module.exports = (app) => {
     // update comment
     app.put('/projects/todos/:id', (req, res) => {
         Todo.findByIdAndUpdate(req.params.id, req.body)
-            .then(todo=> {
+            .then(todo => {
                 res.redirect(`/projects/${todo.projectId}`)
             })
             .catch(err => {
@@ -29,6 +30,7 @@ module.exports = (app) => {
             })
     })
 
+    // delete comment
     app.delete('/projects/todos/:id', (req, res) => {
         console.log(`delete todo id ${req.params.id}`)
       Todo.findByIdAndRemove(req.params.id).then(todo => {
