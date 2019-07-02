@@ -41,7 +41,7 @@ passport.use(new GoogleStrategy({
 
 app.use(cookieSession({
     name: "Projects and ToDos",
-    keys: ["secretkey"],
+    keys: [process.env.SECRET],
     maxAge: 30 * 24 * 60 * 60 * 1000
 }))
 
