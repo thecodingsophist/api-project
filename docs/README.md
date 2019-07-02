@@ -33,4 +33,4 @@ app.put('/projects/todos/:id') this is the action of pushing code to the databas
 app.delete('/projects/todos/:id') this deletes a todo
 
 # API Proposal
-My proposal for my API project is to use RESTful architecture to create an API that allows the user to create, read, update, and delete different projects and todos for those projects. It uses MongoDB, provisions users, has a brochure site/documentation, uses MVC and RESTful architecture, uses TDD approach and has no exposed secrets.
+My proposal for my API project is to use RESTful architecture to create an API that allows the user to create, read, update, and delete different projects and todos for those projects. Using this API, you are able to interact with "Projects" (create, read, update, and delete and add/edit/delete ToDos for those projects. "Projects" represents what you want to do and "ToDos" lists the different things you need to do to complete the "Projectds". It uses MongoDB, provisions users, has a brochure site/documentation, uses MVC and RESTful architecture, uses TDD approach and has no exposed secrets.
