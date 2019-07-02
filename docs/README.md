@@ -26,7 +26,7 @@ FOR TO-DOs
 
 app.post('/projects/:projectId/todos') returned Todo object --> Posts to Mongo Database
 
-app.get('/projects/todo/:id/edit') this gives an edit form for todos
+app.get('/projects/todos/:id/edit') this gives an edit form for todos
 
 app.put('/projects/todos/:id') this is the action of pushing code to the database when a todo is changed
 
