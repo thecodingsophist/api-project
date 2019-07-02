@@ -25,7 +25,7 @@ passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     // callbackURL: "https://shrouded-ridge-38664.herokuapp.com/auth/google/callback"
-    callbackURL: "https://shrouded-ridge-38664.herokuapp.com/auth/google/callback"
+    callbackURL: process.env.GOOGLE_CALLBACK_URL
   },
   function(accessToken, refreshToken, profile, done) {
       console.log("User", profile)

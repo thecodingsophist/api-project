@@ -4,7 +4,11 @@ module.exports = function(app, passport) {
 
     // route for home page
     app.get('/', function(req, res) {
+        if (req.isAuthenticated()) {
+            res.redirect("/home");
+        } else {
         res.render('login', {}); // load the login.handlebars file
+    }
     });
 
     // route for login form

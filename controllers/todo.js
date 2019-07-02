@@ -10,7 +10,7 @@ module.exports = (app) => {
       });
     });
 
-    app.get('/projects/todo/:id/edit', function (req, res) {
+    app.get('/projects/todos/:id/edit', function (req, res) {
         Todo.findById(req.params.id, function(err, todo) {
             res.render('partials/todo-edit', {todo: todo} );
         }).catch ( (error) => {

@@ -12,6 +12,8 @@ var User = require('../models/user');
 // load the auth variables
 var configAuth = require('./auth');
 
+
+
 // module.exports = function(passport) {
 
     // // used to serialize the user for the session
